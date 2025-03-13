@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Case Converter - Text Tools</title>
+    <meta name="description" content="Convert text between different cases: uppercase, lowercase, title case, sentence case, and more.">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        .text-input, .text-output {
+            min-height: 200px;
+            resize: vertical;
+        }
+        .case-button {
+            transition: all 0.3s ease;
+        }
+        .case-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .case-button.active {
+            background-color: #0d6efd;
+            color: white;
+        }
+        .case-button.active:hover {
+            background-color: #0b5ed7;
+        }
+        .case-preview {
+            font-size: 0.9rem;
+            color: #6c757d;
+            margin-top: 0.25rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container py-4">
+        <header class="mb-4">
+            <h1 class="display-4">Case Converter</h1>
+            <p class="lead">Convert text between different cases: uppercase, lowercase, title case, sentence case, and more.</p>
+        </header>
+
+        <div class="row">
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Input Text</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <textarea class="form-control text-input" id="inputText" placeholder="Enter or paste your text here..."></textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-secondary" id="clearInput">
+                                <i class="fas fa-trash"></i> Clear Input
+                            </button>
+                            <button class="btn btn-primary" id="copyInput">
+                                <i class="fas fa-copy"></i> Copy Input
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-6">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Output Text</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="mb-3">
+                            <textarea class="form-control text-output" id="outputText" readonly></textarea>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <button class="btn btn-secondary" id="clearOutput">
+                                <i class="fas fa-trash"></i> Clear Output
+                            </button>
+                            <button class="btn btn-success" id="copyOutput">
+                                <i class="fas fa-copy"></i> Copy Output
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Case Options</h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="uppercase">
+                                    <i class="fas fa-text-height"></i> UPPERCASE
+                                    <div class="case-preview">THIS IS UPPERCASE TEXT</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="lowercase">
+                                    <i class="fas fa-text-height"></i> lowercase
+                                    <div class="case-preview">this is lowercase text</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="title">
+                                    <i class="fas fa-heading"></i> Title Case
+                                    <div class="case-preview">This Is Title Case Text</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="sentence">
+                                    <i class="fas fa-paragraph"></i> Sentence case
+                                    <div class="case-preview">This is sentence case text</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="alternating">
+                                    <i class="fas fa-random"></i> aLtErNaTiNg
+                                    <div class="case-preview">tHiS iS aLtErNaTiNg CaSe</div>
+                                </button>
+                            </div>
+                            <div class="col-md-4">
+                                <button class="btn btn-outline-primary w-100 case-button" data-case="inverse">
+                                    <i class="fas fa-exchange-alt"></i> iNvErSe
+                                    <div class="case-preview">tHiS iS iNvErSe CaSe</div>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="card-title mb-0">Related Tools</h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="list-unstyled mb-0">
+                            <li><a href="text-counter.html"><i class="fas fa-calculator"></i> Word & Character Counter</a></li>
+                            <li><a href="plagiarism-checker.html"><i class="fas fa-search"></i> Plagiarism Checker</a></li>
+                            <li><a href="grammar-checker.html"><i class="fas fa-check-circle"></i> Grammar Checker</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="bg-light py-3 mt-4">
+        <div class="container text-center">
+            <p class="mb-0">&copy; 2024 Text Tools. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/tools/case-converter.js"></script>
+</body>
+</html> 

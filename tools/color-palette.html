@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Palette Generator - MultiTools</title>
+    <meta name="description" content="Generate harmonious color palettes from a single color. Create beautiful color schemes for your designs.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Tool Content -->
+    <div class="tool-container">
+        <div class="tool-header">
+            <h1>Color Palette Generator</h1>
+            <p class="lead">Generate harmonious color palettes from a single color. Create beautiful color schemes for your designs.</p>
+        </div>
+
+        <!-- Ad Space -->
+        <div class="ad-space mb-4">
+            <!-- Ad content will be loaded here -->
+        </div>
+
+        <!-- Tool Interface -->
+        <div class="tool-content">
+            <!-- Base Color Selection -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Select Base Color</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Base Color</label>
+                                <div class="input-group">
+                                    <input type="color" class="form-control form-control-color" id="baseColor" value="#FF5733">
+                                    <input type="text" class="form-control" id="baseHex" value="#FF5733">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('baseHex')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Color Name</label>
+                                <input type="text" class="form-control" id="colorName" readonly>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Palette Options -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Palette Options</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Palette Type</label>
+                                <select class="form-select" id="paletteType">
+                                    <option value="complementary">Complementary</option>
+                                    <option value="triadic">Triadic</option>
+                                    <option value="analogous">Analogous</option>
+                                    <option value="split-complementary">Split Complementary</option>
+                                    <option value="tetradic">Tetradic</option>
+                                    <option value="monochromatic">Monochromatic</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Number of Colors</label>
+                                <select class="form-select" id="numColors">
+                                    <option value="3">3 Colors</option>
+                                    <option value="4">4 Colors</option>
+                                    <option value="5">5 Colors</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeShades" checked>
+                                    <label class="form-check-label" for="includeShades">
+                                        Include Shades
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" id="includeTints" checked>
+                                    <label class="form-check-label" for="includeTints">
+                                        Include Tints
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Generated Palette -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Generated Palette</h5>
+                </div>
+                <div class="card-body">
+                    <div id="paletteColors" class="row g-3 mb-4">
+                        <!-- Color swatches will be generated here -->
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Export Format</label>
+                                <select class="form-select" id="exportFormat">
+                                    <option value="css">CSS Variables</option>
+                                    <option value="scss">SCSS Variables</option>
+                                    <option value="json">JSON</option>
+                                    <option value="tailwind">Tailwind Config</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">&nbsp;</label>
+                                <button class="btn btn-primary w-100" onclick="exportPalette()">
+                                    <i class="fas fa-download"></i> Export Palette
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Saved Palettes -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Saved Palettes</h5>
+                </div>
+                <div class="card-body">
+                    <div id="savedPalettes" class="row g-3">
+                        <!-- Saved palettes will be displayed here -->
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">How to Use</h5>
+                </div>
+                <div class="card-body">
+                    <ol>
+                        <li>Select a base color using the color picker</li>
+                        <li>Choose a palette type and number of colors</li>
+                        <li>Toggle shades and tints as needed</li>
+                        <li>Export the palette in your preferred format</li>
+                        <li>Save your favorite palettes for future use</li>
+                    </ol>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> Tip: Use this tool to create consistent and harmonious color schemes for your designs.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools mt-5">
+            <h3>Related Tools</h3>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Picker</h5>
+                            <p class="card-text">Pick, convert, and manipulate colors in various formats.</p>
+                            <a href="/tools/color-picker" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Contrast Checker</h5>
+                            <p class="card-text">Check the contrast ratio between colors for accessibility.</p>
+                            <a href="/tools/color-contrast" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Blindness Simulator</h5>
+                            <p class="card-text">Simulate how colors appear to people with color vision deficiencies.</p>
+                            <a href="/tools/color-blindness" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/js/main.js"></script>
+    <script src="/js/tools/color-palette.js"></script>
+</body>
+</html> 

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Color Picker - MultiTools</title>
+    <meta name="description" content="Pick, convert, and manipulate colors in various formats. Free color picker tool with advanced color manipulation features.">
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link href="/css/style.css" rel="stylesheet">
+    
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID" crossorigin="anonymous"></script>
+</head>
+<body>
+    <!-- Header Container -->
+    <div id="header-container"></div>
+
+    <!-- Tool Content -->
+    <div class="tool-container">
+        <div class="tool-header">
+            <h1>Color Picker</h1>
+            <p class="lead">Pick, convert, and manipulate colors in various formats.</p>
+        </div>
+
+        <!-- Ad Space -->
+        <div class="ad-space mb-4">
+            <!-- Ad content will be loaded here -->
+        </div>
+
+        <!-- Tool Interface -->
+        <div class="tool-content">
+            <div class="row">
+                <!-- Color Picker Section -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Color Selection</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">Pick a Color</label>
+                                <div class="input-group">
+                                    <input type="color" class="form-control form-control-color" id="colorPicker" value="#000000">
+                                    <input type="text" class="form-control" id="hexInput" value="#000000">
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('hexInput')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Color Preview</label>
+                                <div id="colorPreview" class="border rounded p-3" style="height: 100px;">
+                                    <div class="d-flex justify-content-between">
+                                        <span>Selected Color</span>
+                                        <span id="colorName">Black</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Color Formats Section -->
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title mb-0">Color Formats</h5>
+                        </div>
+                        <div class="card-body">
+                            <div class="mb-3">
+                                <label class="form-label">RGB</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="rgbInput" value="rgb(0, 0, 0)" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('rgbInput')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">HSL</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="hslInput" value="hsl(0, 0%, 0%)" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('hslInput')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">CMYK</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="cmykInput" value="cmyk(0%, 0%, 0%, 100%)" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('cmykInput')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Named Color</label>
+                                <div class="input-group">
+                                    <input type="text" class="form-control" id="namedColorInput" value="black" readonly>
+                                    <button class="btn btn-outline-secondary" type="button" onclick="copyToClipboard('namedColorInput')">
+                                        <i class="fas fa-copy"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Manipulation -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Color Manipulation</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Adjust Brightness</label>
+                                <input type="range" class="form-range" id="brightnessSlider" min="-100" max="100" value="0">
+                                <div class="text-center">
+                                    <span id="brightnessValue">0%</span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Adjust Saturation</label>
+                                <input type="range" class="form-range" id="saturationSlider" min="-100" max="100" value="0">
+                                <div class="text-center">
+                                    <span id="saturationValue">0%</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Color Harmonies</label>
+                                <div class="d-flex gap-2">
+                                    <button class="btn btn-outline-primary" onclick="generateHarmony('complementary')">
+                                        Complementary
+                                    </button>
+                                    <button class="btn btn-outline-primary" onclick="generateHarmony('triadic')">
+                                        Triadic
+                                    </button>
+                                    <button class="btn btn-outline-primary" onclick="generateHarmony('analogous')">
+                                        Analogous
+                                    </button>
+                                </div>
+                            </div>
+                            <div id="harmonyColors" class="d-flex gap-2 mt-2">
+                                <!-- Harmony colors will be displayed here -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Color Palette -->
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">Color Palette</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Recent Colors</label>
+                                <div id="recentColors" class="d-flex gap-2 flex-wrap">
+                                    <!-- Recent colors will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label class="form-label">Saved Colors</label>
+                                <div id="savedColors" class="d-flex gap-2 flex-wrap">
+                                    <!-- Saved colors will be displayed here -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Instructions -->
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title mb-0">How to Use</h5>
+                </div>
+                <div class="card-body">
+                    <ol>
+                        <li>Use the color picker or enter a hex color code to select a color</li>
+                        <li>View the color in different formats (RGB, HSL, CMYK, Named Color)</li>
+                        <li>Copy any color format to your clipboard</li>
+                        <li>Adjust brightness and saturation to modify the color</li>
+                        <li>Generate color harmonies (complementary, triadic, analogous)</li>
+                        <li>Save colors to your palette for future use</li>
+                    </ol>
+                    <div class="alert alert-info">
+                        <i class="fas fa-info-circle"></i> Note: All color conversions and manipulations are done entirely in your browser.
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Related Tools -->
+        <div class="related-tools mt-5">
+            <h3>Related Tools</h3>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Contrast Checker</h5>
+                            <p class="card-text">Check the contrast ratio between two colors for accessibility.</p>
+                            <a href="/tools/color-contrast" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Palette Generator</h5>
+                            <p class="card-text">Generate harmonious color palettes from a single color.</p>
+                            <a href="/tools/color-palette" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="card tool-card h-100">
+                        <div class="card-body">
+                            <h5 class="card-title">Color Blindness Simulator</h5>
+                            <p class="card-text">Simulate how colors appear to people with color vision deficiencies.</p>
+                            <a href="/tools/color-blindness" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Container -->
+    <div id="footer-container"></div>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="/js/main.js"></script>
+    <script src="/js/tools/color-picker.js"></script>
+</body>
+</html> 
