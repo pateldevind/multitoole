@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MultiTools - Your One-Stop Online Tools Collection</title>
-    <meta name="description" content="A comprehensive collection of free online tools for images, SEO, text processing, calculations, and more. Over 100 tools to help you with various tasks.">
+    <title>Text Tools - Free Online Text Processing Tools</title>
+    <meta name="description" content="A collection of free online text processing tools including word counter, case converter, plagiarism checker, and more.">
     
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -12,32 +12,64 @@
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     
-    <!-- Custom CSS -->
-    <link href="/css/style.css" rel="stylesheet">
-    
-    <!-- Google AdSense -->
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=YOUR-ADSENSE-ID" crossorigin="anonymous"></script>
+    <style>
+        .tool-card {
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+        .tool-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .tool-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #0d6efd;
+        }
+        .hero {
+            background: linear-gradient(135deg, #0d6efd 0%, #0dcaf0 100%);
+        }
+        .search-box {
+            max-width: 500px;
+        }
+    </style>
 </head>
 <body>
-    <!-- Header Container -->
-    <div id="header-container"></div>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="index.html">
+                <i class="fas fa-tools"></i> Text Tools
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#tools">All Tools</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
 
     <!-- Hero Section -->
-    <section class="hero bg-primary text-white py-5">
+    <section class="hero text-white py-5">
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-6">
-                    <h1 class="display-4 fw-bold">Welcome to MultiTools</h1>
-                    <p class="lead">Your comprehensive collection of free online tools for various tasks. From image processing to SEO tools, we've got you covered.</p>
+                    <h1 class="display-4 fw-bold">Free Text Processing Tools</h1>
+                    <p class="lead">A collection of powerful tools to help you with text processing, analysis, and formatting.</p>
                     <div class="search-box mt-4">
-                        <form class="d-flex">
-                            <input class="form-control me-2" type="search" placeholder="Search for tools..." id="heroSearch">
-                            <button class="btn btn-light" type="submit">Search</button>
-                        </form>
+                        <input class="form-control" type="search" placeholder="Search for tools..." id="toolSearch">
                     </div>
                 </div>
-                <div class="col-md-6">
-                    <img src="/images/hero-image.svg" alt="MultiTools Hero" class="img-fluid">
+                <div class="col-md-6 text-center">
+                    <i class="fas fa-text-height fa-6x"></i>
                 </div>
             </div>
         </div>
@@ -48,32 +80,156 @@
         <!-- Popular Tools Section -->
         <section class="popular-tools mb-5">
             <h2 class="section-title mb-4">Popular Tools</h2>
-            <div class="row">
-                <!-- Popular tools will be dynamically loaded here -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calculator tool-icon"></i>
+                            <h5 class="card-title">Word & Character Counter</h5>
+                            <p class="card-text">Count words, characters, and analyze text statistics.</p>
+                            <a href="tools/text-counter.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-exchange-alt tool-icon"></i>
+                            <h5 class="card-title">Case Converter</h5>
+                            <p class="card-text">Convert text between different cases easily.</p>
+                            <a href="tools/case-converter.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-search tool-icon"></i>
+                            <h5 class="card-title">Plagiarism Checker</h5>
+                            <p class="card-text">Check text for similarity and common phrases.</p>
+                            <a href="tools/plagiarism-checker.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
 
-        <!-- Ad Space -->
-        <div class="ad-space mb-5">
-            <!-- Ad content will be loaded here -->
-        </div>
-
         <!-- All Tools Section -->
-        <section class="all-tools">
+        <section class="all-tools" id="tools">
             <h2 class="section-title mb-4">All Tools</h2>
-            <div id="tools-container">
-                <!-- Tools will be dynamically loaded here -->
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-calculator tool-icon"></i>
+                            <h5 class="card-title">Word & Character Counter</h5>
+                            <p class="card-text">Count words, characters, and analyze text statistics.</p>
+                            <a href="tools/text-counter.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-exchange-alt tool-icon"></i>
+                            <h5 class="card-title">Case Converter</h5>
+                            <p class="card-text">Convert text between different cases easily.</p>
+                            <a href="tools/case-converter.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-search tool-icon"></i>
+                            <h5 class="card-title">Plagiarism Checker</h5>
+                            <p class="card-text">Check text for similarity and common phrases.</p>
+                            <a href="tools/plagiarism-checker.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-check-circle tool-icon"></i>
+                            <h5 class="card-title">Grammar Checker</h5>
+                            <p class="card-text">Check grammar and improve your writing.</p>
+                            <a href="tools/grammar-checker.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-microphone tool-icon"></i>
+                            <h5 class="card-title">Text to Speech</h5>
+                            <p class="card-text">Convert text to speech easily.</p>
+                            <a href="tools/text-to-speech.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card tool-card">
+                        <div class="card-body text-center">
+                            <i class="fas fa-keyboard tool-icon"></i>
+                            <h5 class="card-title">Speech to Text</h5>
+                            <p class="card-text">Convert speech to text with ease.</p>
+                            <a href="tools/speech-to-text.html" class="btn btn-primary">Use Tool</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section class="about mt-5" id="about">
+            <h2 class="section-title mb-4">About</h2>
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Free Online Text Tools</h5>
+                    <p class="card-text">
+                        Welcome to our collection of free online text processing tools. These tools are designed to help you with various text-related tasks, from counting words to checking grammar. All tools are free to use and work directly in your browser.
+                    </p>
+                </div>
             </div>
         </section>
     </main>
 
-    <!-- Footer Container -->
-    <div id="footer-container"></div>
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4 mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>Text Tools</h5>
+                    <p class="mb-0">Free online tools for text processing and analysis.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <p class="mb-0">&copy; 2024 Text Tools. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     
-    <!-- Custom JS -->
-    <script src="/js/main.js"></script>
+    <!-- Search Functionality -->
+    <script>
+        document.getElementById('toolSearch').addEventListener('input', function(e) {
+            const searchTerm = e.target.value.toLowerCase();
+            const toolCards = document.querySelectorAll('.tool-card');
+            
+            toolCards.forEach(card => {
+                const title = card.querySelector('.card-title').textContent.toLowerCase();
+                const description = card.querySelector('.card-text').textContent.toLowerCase();
+                
+                if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        });
+    </script>
 </body>
 </html> 
